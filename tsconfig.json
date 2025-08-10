@@ -1,0 +1,11 @@
+
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "removeComments": true,
+    "preserveConstEnums": true
+  },
+  "exclude": [
+    "node_modules" 
+  ]
+}
