@@ -9,7 +9,7 @@
   <meta property="og:type" content="article" />
   <meta property="og:title" content="Tensorflow: un espacio de experimentación con redes neuronales" />
   <meta property="og:description" content="Juega con una red neuronal en tu navegador.">
-  <title>Patio de juegos de redes neuronales</title>
+  <title>Juega con redes neuronales</title>
   <link rel="stylesheet" href="bundle.css" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500|Material+Icons" rel="stylesheet"
     type="text/css">
@@ -47,11 +47,11 @@
         </button>
       </div>
       <div class="control">
-        <span class="label">Epoca</span>
+        <span class="label">Epoch</span>
         <span class="value" id="iter-number"></span>
       </div>
       <div class="control ui-learningRate">
-        <label for="learningRate">Tasa de aprendizaje</label>
+        <label for="learningRate">Learning rate</label>
         <div class="select">
           <select id="learningRate">
             <option value="0.00001">0.00001</option>
@@ -69,28 +69,28 @@
         </div>
       </div>
       <div class="control ui-activation">
-        <label for="activations">Activación</label>
+        <label for="activations">Activation</label>
         <div class="select">
           <select id="activations">
             <option value="relu">ReLU</option>
             <option value="tanh">Tanh</option>
-            <option value="sigmoid">Sigmoide</option>
-            <option value="linear">Lineal</option>
+            <option value="sigmoid">Sigmoid</option>
+            <option value="linear">Linear</option>
           </select>
         </div>
       </div>
       <div class="control ui-regularization">
-        <label for="regularizations">Regularización</label>
+        <label for="regularizations">Regularization</label>
         <div class="select">
           <select id="regularizations">
-            <option value="none">Ninguno</option>
+            <option value="none">None</option>
             <option value="L1">L1</option>
             <option value="L2">L2</option>
           </select>
         </div>
       </div>
       <div class="control ui-regularizationRate">
-        <label for="regularRate">Tasa de regularización</label>
+        <label for="regularRate">Regularization rate</label>
         <div class="select">
           <select id="regularRate">
             <option value="0">0</option>
@@ -107,75 +107,71 @@
         </div>
       </div>
       <div class="control ui-problem">
-        <label for="problem">Tipo de problema</label>
+        <label for="problem">Problem type</label>
         <div class="select">
           <select id="problem">
-            <option value="classification">Clasificación</option>
-            <option value="regression">Regresión</option>
+            <option value="classification">Classification</option>
+            <option value="regression">Regression</option>
           </select>
         </div>
       </div>
     </div>
   </div>
-
   <div id="main-part" class="l--page">
-
     <div class="column data">
       <h4>
-        <span>Datos</span>
+        <span>Data</span>
       </h4>
       <div class="ui-dataset">
-        <p>Qué conjunto de datos desea utilizar?</p>
+        <p>Which dataset do you want to use?</p>
         <div class="dataset-list">
-          <div class="dataset" title="Circulo">
+          <div class="dataset" title="Circle">
             <canvas class="data-thumbnail" data-dataset="circle"></canvas>
           </div>
-          <div class="dataset" title="Xor">
+          <div class="dataset" title="Exclusive or">
             <canvas class="data-thumbnail" data-dataset="xor"></canvas>
           </div>
-          <div class="dataset" title="Gausiano">
+          <div class="dataset" title="Gaussian">
             <canvas class="data-thumbnail" data-dataset="gauss"></canvas>
           </div>
-          <div class="dataset" title="Espiral">
+          <div class="dataset" title="Spiral">
             <canvas class="data-thumbnail" data-dataset="spiral"></canvas>
           </div>
-          <div class="dataset" title="Lineal">
+          <div class="dataset" title="Plane">
             <canvas class="data-thumbnail" data-regDataset="reg-plane"></canvas>
           </div>
-          <div class="dataset" title="Multi gausiano">
+          <div class="dataset" title="Multi gaussian">
             <canvas class="data-thumbnail" data-regDataset="reg-gauss"></canvas>
           </div>
         </div>
       </div>
       <div>
         <div class="ui-percTrainData">
-          <label for="percTrainData">Relación entre los datos de entrenamiento y los de prueba:&nbsp;&nbsp;<span
-              class="value">XX</span>%</label>
+          <label for="percTrainData">Ratio of training to test data:&nbsp;&nbsp;<span class="value">XX</span>%</label>
           <p class="slider">
             <input class="mdl-slider mdl-js-slider" type="range" id="percTrainData" min="10" max="90" step="10">
           </p>
         </div>
         <div class="ui-noise">
-          <label for="noise">Ruido:&nbsp;&nbsp;<span class="value">XX</span></label>
+          <label for="noise">Noise:&nbsp;&nbsp;<span class="value">XX</span></label>
           <p class="slider">
             <input class="mdl-slider mdl-js-slider" type="range" id="noise" min="0" max="50" step="5">
           </p>
         </div>
         <div class="ui-batchSize">
-          <label for="batchSize">Tamaño del lote:&nbsp;&nbsp;<span class="value">XX</span></label>
+          <label for="batchSize">Batch size:&nbsp;&nbsp;<span class="value">XX</span></label>
           <p class="slider">
             <input class="mdl-slider mdl-js-slider" type="range" id="batchSize" min="1" max="30" step="1">
           </p>
         </div>
         <button class="basic-button" id="data-regen-button" title="Regenerate data">
-          Regenerar
+          Regenerate
         </button>
       </div>
     </div>
-
     <div class="column features">
-      <h4>Caracteristicas</h4>
-      <p>Qué propiedades quieres alimentar?</p>
+      <h4>Features</h4>
+      <p>Which properties do you want to feed in?</p>
       <div id="network">
         <svg id="svg" width="510" height="450">
           <defs>
@@ -186,8 +182,8 @@
           </defs>
         </svg>
         <div id="hovercard">
-          <div style="font-size:10px">Haga clic en cualquier lugar para editar.</div>
-          <div><span class="type"> El Peso/Sesgo</span> es <span class="value">0.2</span><span><input
+          <div style="font-size:10px">Click anywhere to edit.</div>
+          <div><span class="type">Weight/Bias</span> is <span class="value">0.2</span><span><input
                 type="number" /></span>.</div>
         </div>
         <div class="callout thumbnail">
@@ -201,7 +197,7 @@
             <path d="M12,30C5,20 2,15 12,0" marker-end="url(#arrow)">
           </svg>
           <div class="label">
-            Esta es la salida de una <b>neurona</b>. Pase el cursor para verla más grande.
+            This is the output from one <b>neuron</b>. Hover to see it larger.
           </div>
         </div>
         <div class="callout weights">
@@ -215,12 +211,11 @@
             <path d="M12,30C5,20 2,15 12,0" marker-end="url(#arrow)">
           </svg>
           <div class="label">
-            Las salidas se mezclan con diferentes <b>pesos</b>, que se muestran mediante el grosor de las líneas.
+            The outputs are mixed with varying <b>weights</b>, shown by the thickness of the lines.
           </div>
         </div>
       </div>
     </div>
-
     <div class="column hidden-layers">
       <h4>
         <div class="ui-numHiddenLayers">
@@ -236,16 +231,15 @@
       </h4>
       <div class="bracket"></div>
     </div>
-
     <div class="column output">
-      <h4>Salida</h4>
+      <h4>Output</h4>
       <div class="metrics">
         <div class="output-stats ui-percTrainData">
-          <span>Pérdida de prueba</span>
+          <span>Test loss</span>
           <div class="value" id="loss-test"></div>
         </div>
         <div class="output-stats train">
-          <span>Pérdida de entrenamiento</span>
+          <span>Training loss</span>
           <div class="value" id="loss-train"></div>
         </div>
         <div id="linechart"></div>
@@ -253,9 +247,8 @@
       <div id="heatmap"></div>
       <div style="float:left;margin-top:20px">
         <div style="display:flex; align-items:center;">
-
           <div class="label" style="width:105px; margin-right: 10px">
-            Los colores muestran datos, neuronas y valores de peso.
+            Colors shows data, neuron and weight values.
           </div>
           <svg width="150" height="30" id="colormap">
             <defs>
@@ -274,11 +267,11 @@
         <div style="display:flex;">
           <label class="ui-showTestData mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="show-test-data">
             <input type="checkbox" id="show-test-data" class="mdl-checkbox__input" checked>
-            <span class="mdl-checkbox__label label">Mostrar datos de prueba</span>
+            <span class="mdl-checkbox__label label">Show test data</span>
           </label>
           <label class="ui-discretize mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="discretize">
             <input type="checkbox" id="discretize" class="mdl-checkbox__input" checked>
-            <span class="mdl-checkbox__label label">Discretizar la salida</span>
+            <span class="mdl-checkbox__label label">Discretize output</span>
           </label>
         </div>
       </div>
@@ -310,7 +303,8 @@
     <div class="l--body">
       <h2>Puedo reutilizarlo?</h2>
       <p>Con la esperanza de que ayude a que las redes neuronales sean un poco más accesibles y fáciles de aprender se
-        ha publicado el código en <a href="https://github.com/CRISHFAS/play-with-neural-networks-in-your-browser">GitHub</a></p>
+        ha publicado el código en <a
+          href="https://github.com/CRISHFAS/play-with-neural-networks-in-your-browser">GitHub</a></p>
       <p>También hay algunos controles a continuación para que puedas personalizar para un tema o lección específica.
         Simplemente elige las funciones que quieres que se muestren, guarda <a class="hide-controls-link" href="#">este
           enlace</a>, o <a href="javascript:location.reload();">recarga</a> la página.</p>
@@ -331,43 +325,28 @@
         está la red de esa predicción.</p>
     </div>
 
-
     <div class="l--body">
       <h2>¿Qué biblioteca están usando?</h2>
-      <p><a href="https://github.com/tensorflow/playground/blob/master/src/nn.ts">biblioteca</a> de redes neuronales que
-        cumple con las necesidades de esta visualización educativa. Para aplicaciones del mundo real, considera la
-        biblioteca <a href="https://www.tensorflow.org/">TensorFlow</a>.</p>
+      <p><a href="https://github.com/CRISHFAS/play-with-neural-networks-in-your-browser/blob/master/src/nn.ts">Esta
+          biblioteca</a> de redes neuronales cumple con las necesidades de esta visualización educativa. Para
+        aplicaciones del mundo real, considera la biblioteca <a href="https://www.tensorflow.org/">TensorFlow</a>.</p>
     </div>
 
 
     <div class="l--body">
       <h2>Créditos</h2>
       <p>
-        Este proyecto es una continuación de trabajos previos de muchas personas, en especial:
+        Este proyecto se basa en trabajos previos de varias personas destacadas, en particular la <a
+          href="http://cs.stanford.edu/people/karpathy/convnetjs/demo/classify2d.html">demostración convnet.js</a> de
+        Andrej Karpathy, los <a href="http://colah.github.io/posts/2014-03-NN-Manifolds-Topology/">artículos</a> de
+        Chris Olah sobre redes neuronales, y la documentación y orientación ofrecida por <a
+          href="https://research.google.com/bigpicture/">Big Picture</a>, <a
+          href="https://research.google.com/teams/brain/">Google Brain</a> y <a
+          href="https://pair.withgoogle.com/">People + AI Research (PAIR)</a>.
       </p>
-      <ul>
-        <li>
-          La <a href="http://cs.stanford.edu/people/karpathy/convnetjs/demo/classify2d.html">
-            demostración convnet.js
-          </a> de Andrej Karpathy.
-        </li>
-        <li>
-          Los <a href="http://colah.github.io/posts/2014-03-NN-Manifolds-Topology/">
-            artículos
-          </a> de Chris Olah sobre redes neuronales.
-        </li>
-        <li>
-          <a href="https://research.google.com/bigpicture/">Big Picture</a>,
-          <a href="https://research.google.com/teams/brain/">Google Brain</a> y
-          <a href="https://pair.withgoogle.com/">People + AI Research (PAIR)</a>,
-          que ofrecieron documentación y orientación.
-        </li>
-      </ul>
 
     </div>
-
   </article>
-
 
   <footer>
     <div class="l--body">
@@ -400,11 +379,12 @@
         </svg>
       </a>
       <div class="links">
-        <a href="https://github.com/CRISHFAS/play-with-neural-networks-in-your-browser">Fuente en GitHub</a>
+        <a href="https://github.com/CRISHFAS/play-with-neural-networks-in-your-browser">Source on GitHub</a>
       </div>
     </div>
   </footer>
   <script src="bundle.js"></script>
+  <script src="analytics.js"></script>
 </body>
 
 </html>
